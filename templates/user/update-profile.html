@@ -1,8 +1,6 @@
 {% extends "user/layout.html" %}
 {% block content %}
-
 <div class="container">
-    
     <button class="text-center my-3" onclick="window.location.href='/'" class="btn btn-primary">Home</button>
 
     <h1 class="text-center my-3">
@@ -24,46 +22,41 @@
                     <form action="" method="POST">
 
                         <div class="my-2">
-                            <label for=""><b>Enter Your Full Name</b></label>
-                            <input type="text" name="fname" id="fname" class="form-control">
+                            <label for=""><b>Update Your Full Name</b></label>
+                            <input type="text" value="{{users.fname}}" name="fname" id="fname" class="form-control">
                             
                         </div>
         
                         <div class="my-2">
-                            <label for=""><b>Enter Your Github ID</b></label>
-                            <input type="text" name="ghid" id="ghid" class="form-control">
+                            <label for=""><b>Update Your Github ID</b></label>
+                            <input type="text" value="{{users.ghid}}" name="ghid" id="ghid" class="form-control">
                         </div>
         
                         <div class="my-2">
-                            <label for=""><b>Enter Your Email</b></label>
-                            <input type="email" name="email" id="email" class="form-control">
+                            <label for=""><b>Update Your Email</b></label>
+                            <input type="email" value="{{users.email}}" name="email" id="email" class="form-control">
                         </div>
         
                         <div class="my-2">
-                            <label for="class-checkbox"><b>Choose Your Classes</b></label><br>
-                            <input type="checkbox" id="csa-checkbox" name="classes" value="CSA" class="form-check-input">
+                            <label for="class-checkbox"><b>Update Your Classes</b></label><br>
+                            {% set user_classes = users.classes.split(',') %}
+                            <input type="checkbox" id="csa-checkbox" name="classes" value="CSA" class="form-check-input" {% if 'CSA' in user_classes %} checked {% endif %}>
                             <label for="csa-checkbox">CSA</label><br>
-                            <input type="checkbox" id="csp-checkbox" name="classes" value="CSP" class="form-check-input">
+                            <input type="checkbox" id="csp-checkbox" name="classes" value="CSP" class="form-check-input" {% if 'CSP' in user_classes %} checked {% endif %}>
                             <label for="csp-checkbox">CSP</label>
                         </div>
                         
                         <div class="my-2">
                             <label for="kasm-checkbox"><b>KASM Server Needed?</b></label><br>
                             <div class="form-check">
-                                <input type="checkbox" id="kasm-checkbox" name="kasm_server_needed" value="true" class="form-check-input">
+                                <input type="checkbox" id="kasm-checkbox" name="kasm_server_needed" value="true" class="form-check-input" {% if users.kasm_server_needed %} checked {% endif %}>
                                 <label for="kasm-checkbox" class="form-check-label">Yes</label>
                             </div>
                         </div>
                         
-                        
         
-                        <div class="my-2">
-                            <label for=""><b>Enter Your Password</b></label>
-                            <input type="password" name="pwd" id="pwd" class="form-control">
-                        </div>
-        
-                        <button class="btn btn-success">Signup</button>
-                        <span class="d-flex align-items-center">Already have an account?<a href="/user/" class="text-center nav-link">Login</a></span>
+                        <button class="btn btn-success">Update</button>
+                       
                     </form>
                 </div>
             </div>

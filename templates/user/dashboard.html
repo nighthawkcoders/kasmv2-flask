@@ -2,6 +2,8 @@
 
 {% block content %}
 <div class="container">
+    <button class="text-center my-3" onclick="window.location.href='/'" class="btn btn-primary">Home</button>
+
     {% with messages=get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for category,message in messages %}
@@ -10,9 +12,40 @@
             </div>
             {% endfor %}  {# This was missing #}
             {% endif %}
-            {% endwith %}
-
+            
+            
+            <div class="container">
+                <div class="my-2">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Github Id</th>
+                                    <th>Enrolled Classes</th>
+                                    <th>KASM Server</th>
+                                    <th>Account Status</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{users.id}}</td>
+                                <td>{{users.fname}}</td>
+                                <td>{{users.email}}</td>
+                                <td>{{users.ghid}}</td>
+                                <td>{{users.classes}}</td>
+                                <td>{{users.kasm_server_needed}}</td>
+                                <td>{{users.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                {% endwith %}
             {% include 'user/navbar.html' %}
+            </div>
    
 </div>
 {% endblock content %}
