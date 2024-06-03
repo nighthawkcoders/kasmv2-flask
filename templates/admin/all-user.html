@@ -1,0 +1,49 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="container">
+    <button class="text-center my-3" onclick="window.location.href='/'" class="btn btn-primary">Home</button>
+
+    {% include 'admin/navbar.html' %}
+    <div class="container">
+                <div class="my-2">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Github Id</th>
+                                    <th>Enrolled Classes</th>
+                                    <th>KASM Server</th>
+                                    <th>Account Status</th>
+                                    <th>Approval</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td>{{user.id}}</td>
+                                <td>{{user.fname}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.ghid}}</td>
+                                <td>{{user.classes}}</td>
+                                <td>{{user.kasm_server_needed}}</td>
+                                <td>{{user.status}}</td>
+                                <td>
+                                    
+                                    {% if user.status == 1 %}
+                                    Approved 
+                                    {% else %}
+                                    <a href="/admin/approve-user/{{user.id}}">
+                                        <button class="btn btn-warning">Approve this student</button>
+                                    </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+</div>
+{% endblock content %}

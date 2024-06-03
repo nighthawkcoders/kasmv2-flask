@@ -1,0 +1,38 @@
+{% extends 'admin/layout.html' %}
+{% block content %}
+<div style="text-align: center;">
+    <h2 >Welcome to Admin Dashboard, {{ session.admins_email }}</h2>
+</div>
+<div class="container">
+    <button class="text-center my-3" onclick="window.location.href='/'" class="btn btn-primary">Home</button>
+
+    {% include 'admin/navbar.html' %}
+</div>
+<div class="container"><br>
+    <h3>Users Overview</h3>
+        <div class="row">
+            
+            <div class="col-xl-6 my-2 col-lg-6 col-sm-12">
+                <div class="bg-primary d-flex p-3 justify-content-between align-items-center">
+                    <h4>Total Users</h4>
+                    <h4>{{total}}</h4>
+            </div>
+        </div>
+
+            <div class="col-xl-6 my-2 col-lg-6 col-sm-12">
+                <div class="bg-success d-flex p-3 justify-content-between align-items-center">
+                    <h4>Approved Users</h4>
+                    <h4>{{totalA}}</h4>
+            </div>
+            <br>
+            <div class="col-xl-6 my-2 col-lg-6 col-sm-12">
+                <div class="bg-warning d-flex p-3 justify-content-between align-items-center">
+                    <h4>Unapproved Users</h4>
+                    <h4>{{totalU}}</h4>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
